@@ -14,7 +14,7 @@ let app = http.createServer(function (request, response) {
     let sFiltedID = '';
 
     let oCors = {
-        origin: ['http://localhost:8080','https://woongkipark.github.io'],
+        origin: ['http://localhost:8080','https://davidleehyungu.github.io'],
         header: "Origin, X-Requested-With, Content-Type, Accept"
     };
 
