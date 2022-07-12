@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">    
+    
+	<Panel width="auto" class="sapUiResponsiveMargin">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="filelist" titleStyle="H2"/>
+				<ToolbarSpacer />
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+			<List>
+                <items>
+                  <StandardListItem id="slist1" title="{i18n>slist1}"/>
+                  <StandardListItem id="slist2" title="{i18n>slist2}"/>
+                  <StandardListItem id="slist3" title="{i18n>slist3}"/>
+                </items>
+            </List>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

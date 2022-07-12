@@ -1,8 +1,30 @@
-<mvc:View controllerName="gitpg.myapp.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt">
+<mvc:View controllerName="gitpg.myapp.controller.MainView" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true" 
+          xmlns="sap.m" 
+          xmlns:tnt="sap.tnt">
   <Page id="page" title="{i18n>title}">
     <content>
-      
-      <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
+      <Title titleStyle='H1'>
+        <Link id="link1" text="WEB" target="_blank" press=".onPressList"/>
+      </Title>
+      <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+        <List id="list">
+          <items>
+            <StandardListItem id="list1" title="{i18n>list1}" press=".onPressList" iconDensityAware="false" iconInset="true" type="Navigation" />
+            <StandardListItem id="list2" title="{i18n>list2}" press=".onPressList" iconDensityAware="false" iconInset="true" type="Navigation" />
+            <StandardListItem id="list3" title="{i18n>list3}" press=".onPressList" iconDensityAware="false" iconInset="true" type="Navigation" />                   
+            <StandardListItem id="list4" title="{i18n>list4}" press=".onPressList" iconDensityAware="false" iconInset="true" type="Navigation" />
+            <StandardListItem id="list5" title="{i18n>list5}" press=".onPressList" iconDensityAware="false" iconInset="true" type="Navigation" />                        
+          </items>
+        </List>
+      </Panel>
+      <Panel>
+        <HBox id="myExtend">
+        
+        </HBox>
+      </Panel>
+      <!-- <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
         <tnt:items>
           <tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{myNode>/}">
             <tnt:items>
@@ -10,8 +32,7 @@
             </tnt:items>
           </tnt:NavigationListItem>
         </tnt:items>
-      </tnt:NavigationList>
-    
+      </tnt:NavigationList> -->
     </content>
   </Page>
 </mvc:View>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">    
+    
+	<Panel width="auto" class="sapUiResponsiveMargin">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="WELCOME" titleStyle="H2"/>
+				<ToolbarSpacer />
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+			<Text text="{i18n>WELCOME}" />
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>
