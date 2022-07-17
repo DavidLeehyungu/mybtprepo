@@ -2,6 +2,7 @@
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
     xmlns:mvc="sap.ui.core.mvc">    
     
 	<Panel width="auto" class="sapUiResponsiveMargin">
@@ -12,13 +13,25 @@
 			</OverflowToolbar>
 		</headerToolbar>
 		<content>
-			<List>
+			<!-- <List>
                 <items>
                   <StandardListItem id="slist1" title="{i18n>slist1}"/>
                   <StandardListItem id="slist2" title="{i18n>slist2}"/>
                   <StandardListItem id="slist3" title="{i18n>slist3}"/>
                 </items>
-            </List>
+            </List> -->
+			<Panel>
+			<Text text="Create list"/>
+			</Panel>
+			<tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
+				<tnt:items>
+				<tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{ListModel>/}">
+					<tnt:items>
+						<tnt:NavigationListItem id="myListItem" text="{ListModel>title}" press=".onPress"/>
+					</tnt:items>
+				</tnt:NavigationListItem>
+				</tnt:items>
+			</tnt:NavigationList>
 		</content>
 	</Panel>
 
