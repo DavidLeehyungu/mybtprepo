@@ -12,16 +12,29 @@ sap.ui.define(
 
     return Controller.extend("gitpg.myapp.controller.MainView", {
       onInit: function () {
-        let oJson = new JSONModel();
-        this.getView().setModel(oJson, 'myNode');
-        oJson.loadData(
-            'http://localhost:8921/files'
-            // 'https://port-8921-nodejs-polite-ice-leencjr95746045.codeanyapp.com/files'
-        ).then(
-            function () {
-                debugger;
-            }.bind(this)
-        )
+        var oBusy = new sap.m.BusyDialog();
+        var oModel = new JSONModel();
+        oModel.attachRequestSent(function() {
+          oBusy.open();
+        });
+        oModel.loadData("../model/Data.json");
+        oModel.attachRequestCompleted(function() {
+          oBusy.close();
+        });
+        this.getView().setModel(oModel, "ListModel")
+        
+
+        // let oJson = new JSONModel();
+        // this.getView().setModel(oJson, 'myNode');
+        // debugger;                                       
+        // oJson.loadData(
+        //     'http://localhost:8921/files'
+        //     // 'https://port-8921-nodejs-polite-ice-leencjr95746045.codeanyapp.com/files'
+            
+        // ).then(
+        //     function () {
+        //     }.bind(this)
+        // )
         
         // $.ajax(
         //   'http://localhost:8921/files',
@@ -29,15 +42,29 @@ sap.ui.define(
         //   {
         //     method: "GET",
         //     success : function (...params) {
-        //         debugger;
+        //         debugger;  
         //     }
         //   }
         // )
       },
 
       onPress: function(oEvent){
-        var msg = "Helloworld";
+        var msg = "";
         MessageToast.show(msg);
+      },
+      onCreate: function(oEvent){
+        // var stitle = this.getView().byId("input1");
+        // var scontent = sap.ui.getCore().byId("input2").getValue();
+        let that=this
+        Fragment.load({
+          name : "gitpg.myapp.view.fragments.list1",
+          controller: this,
+          id: this.getView().getId()
+        })
+        var stitle = sap.ui.core.Fragment.byId(that.getView().getId(),"input1");
+
+        debugger;
+        
       },
 
       onPressList: function(oEvent){
@@ -49,8 +76,7 @@ sap.ui.define(
         var sIdLink4 = this.getView().byId('list4').getId();        
         var sIdLink5 = this.getView().byId('list5').getId();
         var sIdLink6 = this.getView().byId('link1').getId();
-        
-        debugger;
+      
         
         var pFragment;
         if(sIdRaiseEvent === sIdLink1){
