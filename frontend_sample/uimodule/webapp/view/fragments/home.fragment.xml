@@ -12,7 +12,7 @@
 			</OverflowToolbar>
 		</headerToolbar>
 		<content>
-			<Text text="{i18n>WELCOME}" />
+			<Text text="{i18n>WELCOME}"/>
 		</content>
 	</Panel>
 
