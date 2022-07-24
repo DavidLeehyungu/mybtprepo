@@ -12,19 +12,45 @@ sap.ui.define(
 
     return Controller.extend("gitpg.myapp.controller.MainView", {
       onInit: function () {
-        var oBusy = new sap.m.BusyDialog();
-        var oModel = new JSONModel();
-        oModel.attachRequestSent(function() {
-          oBusy.open();
-        });
-        oModel.loadData("../model/Data.json");
-        oModel.attachRequestCompleted(function() {
-          oBusy.close();
-        });
-        this.getView().setModel(oModel, "ListModel")
+
+        // test GET YEAR
+        // this._searchDateSetting()
+        // FiscalYear setting
+        // var nowYear = nowToday.getFullYear();
+        // var nowMonth = nowToday.getMonth()+1;
+        // var sPostingDate = this.getView().byId("EndMonth");
+        // var nowYear = sPostingDate.getDateValue().toLocaleDateString().substring(0,4);
+        // var nowYear = sPostingDate.getDateValue();        
+        // oView.byId("FiscalYear").setValue(nowYear);
+        // for(var i = 0; i <= 9; i++) {
+        //   (function(j, year) {
+        //     oModel.setProperty("/years/"+ j, {key : year, text : year});
+        //   })(i, nowYear);
+        //   nowYear--;
+        // }
+        // var oDate = new JSONModel();
+        // oDate.setData({
+        //   dateValue: new Date()
+        // });
+        // this.getView().setModel(oDate);
+        // this.byId("FiscalYear").setDateValue(new Date()); 회계년도
+        // this.byId("EndMonth").setDateValue(new Date());    종료월
+        // this.byId("WriteDate").setDateValue(new Date());  등록기간
+
+        // var oBusy = new sap.m.BusyDialog();
+        // var oModel = new JSONModel();
+        // oModel.attachRequestSent(function() {
+        //   oBusy.open();
+        // });
+        // oModel.loadData("../model/Data.json");
+        // oModel.attachRequestCompleted(function() {
+        //   oBusy.close();
+        // });
+        // this.getView().setModel(oModel, "ListModel")
         
 
         // let oJson = new JSONModel();
+
         // this.getView().setModel(oJson, 'myNode');
         // debugger;                                       
         // oJson.loadData(
@@ -36,16 +62,23 @@ sap.ui.define(
         //     }.bind(this)
         // )
         
-        // $.ajax(
-        //   'http://localhost:8921/files',
-        //   //     'https://port-8921-nodejs-quaint-lizard-lgx0920328747.codeanyapp.com/files'
-        //   {
-        //     method: "GET",
-        //     success : function (...params) {
-        //         debugger;  
-        //     }
-        //   }
-        // )
+        $.ajax(
+          'http://localhost:8921/files',
+          {
+            method: "GET",
+            success : function (...params) {
+              let sSuccess = JSON.parse(params[0]);
+              
+              // myData
+              let oJson = new JSONModel(sSuccess);
+              this.getView().setModel(oJson,'myData')
+
+            }.bind(this),
+            error : function (...params) {
+              debugger;
+            }
+          }
+        )
       },
 
       onPress: function(oEvent){
@@ -53,18 +86,25 @@ sap.ui.define(
         MessageToast.show(msg);
       },
       onCreate: function(oEvent){
+        // test1
         // var stitle = this.getView().byId("input1");
         // var scontent = sap.ui.getCore().byId("input2").getValue();
-        let that=this
-        Fragment.load({
-          name : "gitpg.myapp.view.fragments.list1",
-          controller: this,
-          id: this.getView().getId()
-        })
-        var stitle = sap.ui.core.Fragment.byId(that.getView().getId(),"input1");
-
-        debugger;
-        
+        // test2
+        // let that=this
+        // Fragment.load({
+        //   name : "gitpg.myapp.view.fragments.list1",
+        //   controller: this,
+        //   id: "tableFragment"
+        // }).then(function (pFragment){
+        //   this.oFragment = pFragment;
+        // })
+        // debugger;
+        // var stitle = sap.ui.core.Fragment.byId("tableFragment","input1").getValue();
+        // oModel.setProperty({stitle},)
+        // debugger;
+        //dialog에서 정의한 input 값을 가져오기 위해 getcore로 접근
+        var oInput1 = sap.ui.getCore().byId("input1").getValue();
+        var oInput2 = sap.ui.getCore().byId("input2").getValue();
       },
 
       onPressList: function(oEvent){

@@ -19,7 +19,11 @@
           </items>
         </List>
       </Panel>
+      <!-- <List items = "{myData>/}">
+        <ActionListItem id="Link" text="{myData>}" press=".onPress"/>
+      </List> -->
       <Panel>
+
         <HBox id="myExtend">
         
         </HBox>

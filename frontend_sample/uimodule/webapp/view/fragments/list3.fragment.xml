@@ -25,14 +25,19 @@
 			</Panel>
 			<tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
 				<tnt:items>
-				<tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{ListModel>/}">
+				<tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{myData>/}">
 					<tnt:items>
-						<tnt:NavigationListItem id="myListItem" text="{ListModel>title}" press=".onPress"/>
+						<tnt:NavigationListItem id="myListItem" text="{myData>}" press=".onPress"/>
 					</tnt:items>
 				</tnt:NavigationListItem>
 				</tnt:items>
 			</tnt:NavigationList>
-		</content>
+			<!-- <List items="{myData>/}"> 
+			<items>
+				<ActionListItem id="myList" text="{myData>}" press=".onPress" /> 
+			</items>
+			</List> -->
+			</content>
 	</Panel>
 
 </core:FragmentDefinition>
